@@ -1,12 +1,28 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Grid, GridItem, Show } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
+import GameFetch from "./components/GameFetch";
 
 function App() {
-
   return (
-    <>
-      <Button colorScheme='green'>Button</Button>
-    </>
-  )
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+    >
+      <GridItem area="nav">
+        <NavBar/>
+      </GridItem>
+      <Show above="lg">
+        <GridItem area="aside" >
+          Aside
+        </GridItem>
+      </Show>
+      <GridItem area="main" >
+        <GameFetch/>
+      </GridItem>
+    </Grid>
+  );
 }
 
-export default App
+export default App;
